@@ -32,7 +32,7 @@ h1 {
     font-family: "Quicksand", sans-serif;
     margin: 0;
     padding: 10px;
-    /* Remove opacity and animation from h1 since container will handle it */
+   
 }
 
 .input-fields {
@@ -69,7 +69,7 @@ h1 {
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    opacity: 0;  /* Start invisible */
+    opacity: 0;  
     animation: fadeInButton 1s ease forwards;
     animation-delay: 1.5s;
 }
@@ -107,8 +107,59 @@ body::before {
     z-index: -1;
 }
 
-
-
 body {
     min-height: 100vh;
+}
+
+@keyframes fadeInBox {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-container {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 1200px;
+}
+
+.item-container {
+    display: none;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+}
+
+.image-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.description {
+    flex-grow: 1;
+    font-family: "Quicksand", sans-serif;
+    color: #333;
+}
+
+.fade-in {
+    animation: fadeInBox 0.5s ease forwards;
 }
