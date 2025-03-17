@@ -74,7 +74,7 @@ startButton.addEventListener('click', async () => {
         container.style.display = 'flex';
         
         //delay na animação com base na posição do container
-        container.style.animationDelay = `${i * 0.1}s`;
+        container.style.animationDelay = `${i * 0.2}s`;
         container.classList.add('fade-in');
         
 
@@ -97,9 +97,8 @@ startButton.addEventListener('click', async () => {
     }
 });
 
-// Function to create and show popup
+//essa função cria um popup com o conteúdo passado como parâmetro
 function showPopup(content) {
-    // Remove any existing popup
     const existingPopup = document.querySelector('.popup-box');
     if (existingPopup) {
         existingPopup.remove();
@@ -142,7 +141,6 @@ document.addEventListener('click', (e) => {
     
     if (popup && !isClickInsidePopup && !isClickOnLink) {
         popup.remove();
-        showGrid();
     }
 });
 
