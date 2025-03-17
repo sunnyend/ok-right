@@ -74,6 +74,11 @@ h1 {
     animation-delay: 1.5s;
 }
 
+.get-started:hover {
+    background: linear-gradient(to right, #cf1261, #a30e4c);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
 @keyframes fadeInButton {  
     from {
         opacity: 0;
@@ -83,11 +88,6 @@ h1 {
         opacity: 1;
         transform: translate(-50%, -50%);  
     }
-}
-
-.get-started:hover {
-    background: linear-gradient(to right, #cf1261, #a30e4c);
-    transform: translate(-50%, -50%) scale(1.05);
 }
 
 body, html {
@@ -143,6 +143,7 @@ body {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 15px;
     opacity: 0;
 }
 
@@ -151,8 +152,6 @@ body {
     height: 120px;
     background-color: #e0e0e0;
     border-radius: 8px;
-    margin-right: 15px;
-    flex-shrink: 0;
 }
 
 .description {
