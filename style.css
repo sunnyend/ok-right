@@ -1,0 +1,114 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-container {
+    position: absolute;
+    width: 40%;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1s; 
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    font-family: "Quicksand", sans-serif;
+    margin: 0;
+    padding: 10px;
+    /* Remove opacity and animation from h1 since container will handle it */
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    height: auto;
+    min-height: auto;
+}
+
+.input-field {
+    width: 200px;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.get-started {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #54575a;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0;  /* Start invisible */
+    animation: fadeInButton 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeInButton {  
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 50px));  
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);  
+    }
+}
+
+.get-started:hover {
+    background-color: rgb(207, 18, 97);
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #e0e0e0, #a8a8a8);  
+    z-index: -1;
+}
+
+
+
+body {
+    min-height: 100vh;
+}
