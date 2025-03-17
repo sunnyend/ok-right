@@ -35,33 +35,14 @@ h1 {
    
 }
 
-.input-fields {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: auto;
-    height: auto;
-    min-height: auto;
-}
-
-.input-field {
-    width: 200px;
-    padding: 8px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
 
 .get-started {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
     padding: 25px;
-    margin: 5px;
     border: none;
     border-radius: 8px;
     background: linear-gradient(to right, #2ecc71, #27ae60);
@@ -69,14 +50,10 @@ h1 {
     font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
-    opacity: 0;  
+    z-index: 1000;
+    opacity: 0;  /* Start invisible */
     animation: fadeInButton 1s ease forwards;
     animation-delay: 1.5s;
-}
-
-.get-started:hover {
-    background: linear-gradient(to right, #cf1261, #a30e4c);
-    transform: translate(-50%, -50%) scale(1.05);
 }
 
 @keyframes fadeInButton {  
@@ -88,6 +65,11 @@ h1 {
         opacity: 1;
         transform: translate(-50%, -50%);  
     }
+}
+
+.get-started:hover {
+    background: linear-gradient(to right, #cf1261, #a30e4c);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 body, html {
@@ -104,8 +86,30 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #e0e0e0, #a8a8a8);  
+    background-image: 
+        url('paw.webp'),
+        linear-gradient(to bottom, #e0e0e0, #a8a8a8);
+    background-repeat: repeat, no-repeat;
+    background-size: 85px, 100% 100%;
+    background-position: 0 0, 0 0;
+    background-position-x: 150px;
+    background-position-y: 150px; 
+    opacity: 0.1; 
     z-index: -1;
+    pointer-events: none;
+}
+
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #e0e0e0, #a8a8a8);
+    z-index: -2; /* Behind the pattern */
+    pointer-events: none;
 }
 
 body {
@@ -123,41 +127,74 @@ body {
     }
 }
 
+.description-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.donations {
+    font-family: "Quicksand", sans-serif;
+    color: #333;
+}
+
 .grid-container {
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-    position: absolute;
+    display: none; /* Initially hidden */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    grid-template-rows: repeat(3, auto); /* Creates 3 rows */
+    gap: 20px; /* Space between items */
+    position: absolute; /* Changed from fixed */
     top: 250px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
     max-width: 1200px;
+    z-index: 5;
+    padding: 20px;
 }
 
 .item-container {
-    display: none;
+    display: flex; /* Changed from none - will be controlled by JS */
     align-items: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    gap: 15px;
-    opacity: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Take full width of grid cell */
+    height: 150px; /* Fixed height */
+    box-sizing: border-box; /* Include padding in width/height */
 }
 
-.image-placeholder {
+.image-placeholder, 
+img {
     width: 120px;
     height: 120px;
-    background-color: #e0e0e0;
     border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+    flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .description {
-    flex-grow: 1;
     font-family: "Quicksand", sans-serif;
     color: #333;
+    margin: 0;
+}
+
+.counter {
+    font-family: "Quicksand", sans-serif;
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .fade-in {
@@ -186,4 +223,33 @@ body {
 
 .footer-nav a:hover {
     color: #2ecc71;
+}
+
+
+.popup-box {
+    display: none;
+    position: fixed;
+    bottom: 80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+    animation: fadeInUp 0.3s ease forwards;
+    z-index: 100;
+}
+
+/*animação para o popup*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
